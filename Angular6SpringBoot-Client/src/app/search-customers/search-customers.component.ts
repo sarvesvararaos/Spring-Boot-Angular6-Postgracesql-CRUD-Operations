@@ -11,7 +11,6 @@ export class SearchCustomersComponent implements OnInit {
 
   age: number;
   customers: Customer[];
-
   constructor(private dataService: CustomerService) { }
 
   ngOnInit() {
