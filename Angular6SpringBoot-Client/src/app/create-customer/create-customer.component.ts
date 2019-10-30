@@ -12,6 +12,7 @@ export class CreateCustomerComponent implements OnInit {
 
   customer: Customer = new Customer();
   submitted = false;
+  ageValid=true;
 
   constructor(private customerService: CustomerService) { }
 
@@ -30,6 +31,13 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   onSubmit() {
+    if(this.customer.age<=0)
+    {
+      // this.ageValid = false;\
+      
+      alert(this.customer.age+' Age is not valid')
+      return ;
+    }
     this.submitted = true;
     this.save();
   }

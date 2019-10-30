@@ -1,14 +1,29 @@
 <h3>Create Customer</h3>
 <div [hidden]="submitted" style="width: 300px;">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <!-- <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+          <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+              <div *ngIf="firstName.errors.required">First Name is required</div>
+          </div>
+      </div> -->
+
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="customer.name" name="name">
+      <input type="text" class="form-control" id="name" [(ngModel)]="customer.name" name="name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required>
+      <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required">Name is required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="text" class="form-control" id="age" required [(ngModel)]="customer.age" name="age">
+      <input type="text" class="form-control" id="age"  [(ngModel)]="customer.age" name="age" #age="ngModel" [ngClass]="{'is-invalid': f.submitted && age.invalid}"required >
+      <div *ngIf="f.submitted && age.invalid" class="invalid-feedback">
+        <div *ngIf="age.errors.required">Age is required</div>
+        
+      </div>
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>

@@ -12,8 +12,6 @@ export class SearchCustomersComponent implements OnInit {
   age: number;
   customers: Customer[];
 
-  
-  
   constructor(private dataService: CustomerService) { }
 
   ngOnInit() {
@@ -23,7 +21,7 @@ export class SearchCustomersComponent implements OnInit {
   private searchCustomers() {
     this.dataService.getCustomersByAge(this.age)
       .subscribe(customers => this.customers = customers);
-      console.log("Hello world");
+      
   }
 
   onSubmit() {
